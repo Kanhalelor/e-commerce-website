@@ -37,7 +37,6 @@ body {
 form {
     display: flex;
     flex-flow: column;
-    width: 80%;
     margin: 0 auto;
     padding: 1rem 1.2rem;
 }

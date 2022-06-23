@@ -67,6 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     text-decoration: dotted;
     font-size: x-large;
     margin: 1rem 0;
+    padding: 0 1rem;
+}
+/* on small screens */
+@media screen and (max-width: 600){
+    .call-to-action-link {
+        font-size: small;
+    }
 }
 a {
     color: #f1f1f1;
@@ -82,13 +89,16 @@ a:hover {
     margin-top: 0.5rem;
 }
 img {
+    object-fit: cover;
     max-width: 150px;
+    border-radius: 60%;
+    outline: 1px solid #121212;
 }
 </style>
 <body>
 <div class="sign-up-container">
 <div class="logo-container">
-    <img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo">
+    <a href="../client/index.html"><img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo"></a>
 </div>
 <h1>Login</h1>
     <?php if ($is_invalid): ?>
