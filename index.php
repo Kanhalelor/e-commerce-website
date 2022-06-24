@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 session_start();
 
 if(isset($_SESSION["user_id"])) {
@@ -508,14 +508,8 @@ footer {
      <footer>
         <small>All rights reserve &copy; <a href="https://kanhalelor.github.io/">Kanhalelo</a></small>
      </footer> 
-    <?php else: ?>
-        <div class="logo-container">
-            <a href="./client/index.html"><img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo"></a>
-        </div>
-        <p class="session-not-set p-logo">
-            <a href="./server/login.php">Log in</a> or <a href="./server/signup.html">sign up</a>
-        </p>
-        
+    <?php else:?>
+        <?php header("location: ./index.html", true, 302);?>
     <?php endif; ?>
     <script src="./client/js/index.js"></script>
 </body>
