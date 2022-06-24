@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_regenerate_id();
             $_SESSION['user_id'] = $user['id'];
 
-            header("Location: index.php");
+            header("Location: ../index.php");
             exit;
 
         }
@@ -98,7 +98,7 @@ img {
 <body>
 <div class="sign-up-container">
 <div class="logo-container">
-    <a href="../client/index.html"><img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo"></a>
+    <a href="../index.html"><img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo"></a>
 </div>
 <h1>Login</h1>
     <?php if ($is_invalid): ?>

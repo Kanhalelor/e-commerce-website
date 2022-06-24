@@ -3,7 +3,7 @@
 session_start();
 
 if(isset($_SESSION["user_id"])) {
-    $mysqli = require __DIR__ . "/db.php";
+    $mysqli = require __DIR__ . "/server/db.php";
 
     $sql = "SELECT * FROM users WHERE id = {$_SESSION["user_id"]}";
 
@@ -396,7 +396,7 @@ footer {
         </div>
         <h1 class="welcome-msg">Welcome To Our Shop - <b class="name"><?= htmlspecialchars($user["name"]) ?></b></h1>
         <ul class="menu">
-            <li><a class="logout-a" href="./logout.php">Logout</a></li>
+            <li><a class="logout-a" href="./server/logout.php">Logout</a></li>
             <li class="cart-div"><span id="count">0</span><i class="fa fa-shopping-cart trolley"></i></li>
         </ul>
     </nav>
@@ -509,14 +509,14 @@ footer {
         <small>All rights reserve &copy; <a href="https://kanhalelor.github.io/">Kanhalelo</a></small>
      </footer> 
     <?php else: ?>
-        <div class="div-logo">
-            <img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo">
+        <div class="logo-container">
+            <a href="./client/index.html"><img src="https://i.pinimg.com/originals/12/d6/00/12d60046505b41fe3ca8a71e0d186c62.png" alt="" class="logo"></a>
         </div>
         <p class="session-not-set p-logo">
-            <a href="login.php">Log in</a> or <a href="signup.html">sign up</a>
+            <a href="./server/login.php">Log in</a> or <a href="./server/signup.html">sign up</a>
         </p>
         
     <?php endif; ?>
-    <script src="../client/js/index.js"></script>
+    <script src="./client/js/index.js"></script>
 </body>
 </html>

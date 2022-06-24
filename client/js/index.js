@@ -39,19 +39,21 @@ if (document.readyState == 'loading') {
 }
 
 // placed order
-function orderPlaced() {
+function orderPlaced(e) {
     alert('Thank you for your purchase')
     const cartWrapper = document.getElementsByClassName('cart-wrapper')[0]
     while (cartWrapper.hasChildNodes()) {
         cartWrapper.removeChild(cartWrapper.firstChild)
     }
-    updateTotal() 
+    updateTotal();
+    updateCartNumber(e);
 }
 // remove items from cart
 const removeItemFromCart = (e) => {
     const removeBtn = e.target;
     removeBtn.parentElement.remove();
     updateTotal();
+    updateCartNumber(e);
 }
 // on quantity change
 const onQuantityChange = (e) => {
@@ -68,7 +70,6 @@ const addItemToCartBtn = (e) => {
     const productName = productDiv.firstElementChild.innerText;
     const productPrice = button.parentElement.firstElementChild.innerText;
     const  productImage = button.parentElement.previousElementSibling.firstElementChild.src;
-    console.log(productName, productPrice, productImage);
     addItemToCart(productName, productPrice, productImage)
     updateTotal()
 }
@@ -78,7 +79,7 @@ const addItemToCart = (productName, productPrice, productImage) => {
     cartDiv.classList.add('cart-item');
     const cartWrapper = document.getElementsByClassName('cart-wrapper')[0];
     const cartItemNames = document.getElementsByClassName('cart-item-name');
-    for (var i = 0; i < cartItemNames.length; i++) {
+    for (let i = 0; i < cartItemNames.length; i++) {
         if (cartItemNames[i].innerText == productName) {
             alert('This item is already added to the cart')
             return;
@@ -107,25 +108,21 @@ const updateTotal = (e) => {
         const priceElement = document.getElementsByClassName('item-price')[0];
         const price = parseFloat(priceElement.innerText.replace('N$', ''));
         total = total + (price * quantity);
-        console.log(price, quantity, total);
     }
     total = Math.round(total * 100) / 100;
     document.getElementsByClassName('total-price')[0].innerText = "N$" + total;
 }
 
-// increment cart value
+// update cart value
 const updateCartNumber = (e) => {
     let button = e.target;
     let cartNumber = parseInt(document.getElementById('count').innerText);
+    let numberOfItemsInCart = document.querySelectorAll('.cart-item').length;
+    cartNumber = numberOfItemsInCart;
     if (button.classList.contains('remove-item')) {
-        cartNumber -= 1;
-        document.getElementById('count').innerText = cartNumber;
-    } else if (button.classList.contains('add')) {
-        cartNumber += 1;
-        document.getElementById('count').innerText = cartNumber;
-    } else {
-        cartNumber = 0;
+        numberOfItemsInCart -=1;
     }
+    document.getElementById('count').innerText = cartNumber;
 }
 
 // display cart
